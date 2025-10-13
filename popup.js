@@ -2,48 +2,76 @@
 // Lógica principal do Gerador EAN GTIN
 
 const generateBtn = document.getElementById('generateBtn');
+const copyBtn = document.getElementById('copyBtn');
+const resultsDiv = document.getElementById('results');
 
-generateBtn.addEventListener('click', function() {
+
+generateBtn.addEventListener('click', function () {
     const tipo = parseInt(document.getElementById('gtinType').value);
     const prefixo = document.getElementById('prefixInput').value;
-   
+
     console.log("Botão clicado!", tipo, prefixo);
 
-    const codigos = gerarEAN(tipo, prefixo);
-    console.log("Código gerado:", codigos);
+    const codigo = gerarEAN(tipo, prefixo);
+    console.log("Código gerado:", codigo);
 
     resultsDiv.innerHTML = ''; // Limpa o que estava escrito antes
-      
+
     const p = document.createElement('p');
-        p.textContent = codigos;
-        resultsDiv.appendChild(p);
+    p.textContent = codigo;
+    resultsDiv.appendChild(p);
 
+    copyBtn.disabled = false;
+
+    p.addEventListener('click', function () {
+        copiarParaClipboard(codigo);
     });
+});
 
-const resultsDiv = document.getElementById('results');
+//evento do botão de copiar
+copyBtn.addEventListener('click', function () {
+    const codigoTexto = resultsDiv.textContent.trim();
+    copiarParaClipboard(codigoTexto);
+});
+
+// Função para copiar
+
+function copiarParaClipboard(texto) {
+    navigator.clipboard.writeText(texto)
+        .then(() => {
+            console.log("Código copiado:", texto);
+            copyBtn.textContent = "Copiado!";
+            setTimeout(() => copyBtn.textContent = "Copiar Código", 2000);
+        })
+        .catch(err => console.error("Erro ao copiar:", err));
+}
+
+
+
+
 
 // Função Geradora de códigos EAN
 
 function gerarEAN(tipo, prefixo) {
 
- // 1 - Calcular quantos digitos faltam com base no tipo e prefixo
+    // 1 - Calcular quantos digitos faltam com base no tipo e prefixo
     let digitosNecessarios = tipo - 1 - prefixo.length;
-    if(digitosNecessarios <= 0) {
+    if (digitosNecessarios <= 0) {
         console.error("Prefixo longo demais para o tipo de GTIN escolhido");
         return [];
     }
 
-// 2 - Gerar Números aleatórios para preencher
-function gerarNumeroAleatorio(){
-    
-    const minimo = Math.pow(10, digitosNecessarios - 1);
-    const maximo = Math.pow(10, digitosNecessarios) - 1;
+    // 2 - Gerar Números aleatórios para preencher
+    function gerarNumeroAleatorio() {
 
-    const numero = Math.floor(Math.random() *(maximo - minimo +1)) + minimo;
+        const minimo = Math.pow(10, digitosNecessarios - 1);
+        const maximo = Math.pow(10, digitosNecessarios) - 1;
 
-    return numero.toString().padStart(digitosNecessarios, '0');
-}
-// 3 - Calcular o digito verificador com o algoritmo EAN
+        const numero = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+
+        return numero.toString().padStart(digitosNecessarios, '0');
+    }
+    // 3 - Calcular o digito verificador com o algoritmo EAN
     function calcularDigitoVerificador(base) {
         // 1 - Converter em array de digitos numéricos
         const digitos = base.split('').map(Number);
@@ -69,12 +97,12 @@ function gerarNumeroAleatorio(){
     }
 
 
-// 4 - Concatenar prefixo + parte aleatório + digito verificador
-        const parteAleatoria = gerarNumeroAleatorio();
-        const base = prefixo + parteAleatoria;
-        const verificador = calcularDigitoVerificador(base);
-        const codigoCompleto = base + verificador;
-    
-        return codigoCompleto;
-    }
+    // 4 - Concatenar prefixo + parte aleatório + digito verificador
+    const parteAleatoria = gerarNumeroAleatorio();
+    const base = prefixo + parteAleatoria;
+    const verificador = calcularDigitoVerificador(base);
+    const codigoCompleto = base + verificador;
+
+    return codigoCompleto;
+}
 
