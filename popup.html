@@ -1,73 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Gerador EAN GTIN</title>
-        <style>
-            body {
-                font-family: sans-serif;
-                width: 320px;
-                padding: 16px;
-                background-color: #fafafa;
-            }
 
-            h1 {
-                font-size: 18px;
-                margin-bottom: 12px;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador EAN GTIN</title>
+    <link rel="stylesheet" href="popup.css">
 
-            label{
-                display: block;
-                margin-top: 8px;
-                font-weight: 600;
-            }
-            
-            input,
-            select,
-            button {
-                width: 100%;
-                padding: 6px;
-                margin-top: 4px;
-                font-size: 14px;
-            }
+    <style>
+        body {
+            font-family: sans-serif;
+            width: 320px;
+            padding: 16px;
+            background-color: #fafafa;
+        }
 
-            #results {
-                margin-top: 12px;
-                padding: 8px;
-                background: #fff;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                min-height: 60px;
-                max-height: 200px;
-                overflow-y: auto;
-                font-family: monospace;
-                font-size: 13px;
-            }
-        </style>
-    </head>
+        h1 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
 
-    <body>
-        <h1>Gerador EAN / GTIN</h1>
+        label {
+            display: block;
+            margin-top: 8px;
+            font-weight: 600;
+        }
 
-        <label for="gtinType">Tipo de código</label>
-        <select id="gtinType">
-            <option value="13">GTIN-13 (EAN-13)</option>
-            <option value="14">GTIN-14</option>
-        </select>
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            font-size: 14px;
+        }
 
-        <label for="prefixInput">Prefixo (opcional):</label>
-        <input type = "text" id="prefixInput" placeholder="Ex: 7891234" />
+        #results {
+            margin-top: 12px;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 60px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
 
-        
-        <button id="generateBtn">Gerar</button>
+<body class="popup">
+    <div class="card">
+        <div class="header">
+            <div>
+                <div class="h1">Gerador EAN / GTIN</div>
 
-        <div id="results"></div>
-        <button id="copyBtn" disabled>Copiar Código</button>
+                <label class="label" for="gtinType">Tipo</label>
+                <select id="gtinType" class="input">
+                    <option value="13">GTIN-13 (EAN-13)</option>
+                    <option value="14">GTIN-14</option>
+                </select>
 
-        
+                <label class="label" for="prefixInput">Prefixo (opcional):</label>
+                <input id="prefixInput" class="input" placeholder="Ex: 7891234" />
 
 
-        <script src="popup.js"></script>
-        </body>
-    </html>
+                <button id="generateBtn" class="btn btn-primary" style="margin-top: 10px">Gerar</button>
+
+                <div id="results" class="results" aria-live="polite" style="margin-top: 10px;"></div>
+
+                <button id="copyBtn" class="btn btn-ghost" disabled style="margin-top: 10px;">Copiar Código</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

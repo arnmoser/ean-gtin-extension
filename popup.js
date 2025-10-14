@@ -4,7 +4,7 @@
 const generateBtn = document.getElementById('generateBtn');
 const copyBtn = document.getElementById('copyBtn');
 const resultsDiv = document.getElementById('results');
-
+let codigoAtual = '';
 
 generateBtn.addEventListener('click', function () {
     const tipo = parseInt(document.getElementById('gtinType').value);
@@ -13,14 +13,23 @@ generateBtn.addEventListener('click', function () {
     console.log("Botão clicado!", tipo, prefixo);
 
     const codigo = gerarEAN(tipo, prefixo);
-    console.log("Código gerado:", codigo);
+    if(!codigo) {
+        resultsDiv.textContent = "Prefixo Inválido para o Tipo Escolhido";
+        copyBtn.disabled = true;
+        return;
+    }
+    codigoAtual = codigo;
 
     resultsDiv.innerHTML = ''; // Limpa o que estava escrito antes
+
+
+    console.log("Código gerado:", codigo);
 
     const p = document.createElement('p');
     p.textContent = codigo;
     resultsDiv.appendChild(p);
 
+    copyBtn.textContent = "Copiar Código"; //reseta texto do botão
     copyBtn.disabled = false;
 
     p.addEventListener('click', function () {
@@ -30,8 +39,8 @@ generateBtn.addEventListener('click', function () {
 
 //evento do botão de copiar
 copyBtn.addEventListener('click', function () {
-    const codigoTexto = resultsDiv.textContent.trim();
-    copiarParaClipboard(codigoTexto);
+  if(!codigoAtual) return;
+    copiarParaClipboard(codigoAtual);
 });
 
 // Função para copiar
@@ -58,7 +67,7 @@ function gerarEAN(tipo, prefixo) {
     let digitosNecessarios = tipo - 1 - prefixo.length;
     if (digitosNecessarios <= 0) {
         console.error("Prefixo longo demais para o tipo de GTIN escolhido");
-        return [];
+        return null;
     }
 
     // 2 - Gerar Números aleatórios para preencher
