@@ -105,3 +105,17 @@ html,body { margin:0; padding:0; font-family: var(--font-ui); color:var(--text);
 @media (max-width: 360px){
   :root { --width-popup: 300px; }
 }
+
+/* estilos para input compacto e alinhamento */
+#multiOptions label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+#quantityInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  font-size: 14px;
+}
