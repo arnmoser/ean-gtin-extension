@@ -65,9 +65,22 @@
                 <label class="label" for="prefixInput">Prefixo (opcional):</label>
                 <input id="prefixInput" class="input" placeholder="Ex: 7891234" />
 
+                <!-- Checkbox para ativar geração múltipla -->
+                <label style="display:flex; align-items:center; gap:8px; margin-top:10px;">
+                    <input id="multiCheck" type="checkbox"/>
+                    <span>Gerar múltiplos códigos</span>
+                </label>
 
                 <button id="generateBtn" class="btn btn-primary" style="margin-top: 10px">Gerar</button>
 
+                <!-- Container que aparece apenas quando o multicheck está marcado -->
+                <div id="multiOptions" style="display:nome; margin-top:8px;">
+                    <labelfor="quantityInput">Quantidade</label>
+                    <input id="quantityInput" type="number" min="1" max="100" value="10" />
+                    <button id="downloadCsvBtn" class="btn" style="margin-top:8px; display:none;">Baixar Códigos EAN em CSV</button> 
+                </div>
+
+                
                 <div id="results" class="results" aria-live="polite" style="margin-top: 10px;"></div>
 
                 <button id="copyBtn" class="btn btn-ghost" disabled style="margin-top: 10px;">Copiar Código</button>
