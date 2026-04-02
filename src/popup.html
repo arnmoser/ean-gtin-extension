@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: sans-serif;
-            width: 320px;
+            width: 480px;
             padding: 16px;
             background-color: #fafafa;
         }
@@ -42,10 +42,49 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             min-height: 60px;
-            max-height: 200px;
+            max-height: 300px;
             overflow-y: auto;
             font-family: monospace;
             font-size: 13px;
+        }
+
+        .result-item-wrapper {
+            padding: 8px;
+            margin: 4px 0;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .result-item {
+            cursor: pointer;
+            color: #0b76ff;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .result-item:hover {
+            text-decoration: underline;
+        }
+
+        .barcode-preview {
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            padding: 4px;
+            display: inline-block;
+            background: white;
+        }
+
+        .barcode-actions {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .barcode-actions button {
+            flex: 1;
+            padding: 4px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -74,13 +113,13 @@
                 <button id="generateBtn" class="btn btn-primary" style="margin-top: 10px">Gerar</button>
 
                 <!-- Container que aparece apenas quando o multicheck está marcado -->
-                <div id="multiOptions" style="display:nome; margin-top:8px;">
-                    <labelfor="quantityInput">Quantidade</label>
+                <div id="multiOptions" style="display:none; margin-top:8px;">
+                    <label for="quantityInput">Quantidade</label>
                     <input id="quantityInput" type="number" min="1" max="100" value="10" />
-                    <button id="downloadCsvBtn" class="btn" style="margin-top:8px; display:none;">Baixar Códigos EAN em CSV</button> 
+                    <button id="downloadCsvBtn" class="btn" style="margin-top:8px; display:none;">Baixar Códigos EAN em CSV</button>
+                    <button id="downloadBarcodeZipBtn" class="btn" style="margin-top:8px; display:none;">Baixar Códigos de Barras em ZIP</button>
                 </div>
 
-                
                 <div id="results" class="results" aria-live="polite" style="margin-top: 10px;"></div>
 
                 <button id="copyBtn" class="btn btn-ghost" disabled style="margin-top: 10px;">Copiar Código</button>
@@ -88,10 +127,11 @@
         </div>
     </div>
 
+    <!-- Scripts das bibliotecas externas -->
+    <script src="scripts/jsbarcode.min.js"></script>
+    <script src="scripts/jszip.min.js"></script>
 
     <script type="module" src="scripts/popup.js"></script>
 </body>
-
-<script type="module" src="scripts/popup.js"></script>
 
 </html>

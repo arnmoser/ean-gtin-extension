@@ -19,6 +19,10 @@
     "url": "https://github.com/arnmoser/ean-gtin-extension/issues"
   },
   "homepage": "https://github.com/arnmoser/ean-gtin-extension#readme",
+  "dependencies": {
+    "jsbarcode": "^3.11.5",
+    "jszip": "^3.10.1"
+  },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
     "eslint": "^9.38.0",

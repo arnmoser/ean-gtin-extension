@@ -119,3 +119,121 @@ html,body { margin:0; padding:0; font-family: var(--font-ui); color:var(--text);
   padding: 6px;
   font-size: 14px;
 }
+
+/* Estilos para barcodes */
+
+/* Container dos barcodes */
+.barcode-container {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+  padding: 8px;
+  background: #fafafa;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.barcode-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ações dos barcodes */
+.barcode-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Botão pequeno */
+.btn-small {
+  padding: 6px 10px;
+  font-size: 12px;
+  flex: 1;
+  min-width: 60px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-small:hover {
+  opacity: 0.9;
+  box-shadow: 0 2px 8px rgba(11, 118, 255, 0.2);
+}
+
+.btn-small:active {
+  transform: translateY(1px);
+}
+
+.btn-small:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Wrapper para cada item de resultado */
+.result-item-wrapper {
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.result-item-wrapper .result-item {
+  background: transparent;
+  padding: 0 0 8px 0;
+  margin: 0;
+  border: none;
+}
+
+.result-item-wrapper .result-item:hover {
+  background: transparent;
+  color: var(--success);
+}
+
+/* Scrollbar customizada para resultados */
+.results {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.results::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 3px;
+}
+
+.results::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+  :root {
+    --width-popup: 360px;
+  }
+
+  body {
+    width: 360px !important;
+  }
+
+  .barcode-actions {
+    gap: 4px;
+  }
+
+  .btn-small {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
