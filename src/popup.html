@@ -6,94 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerador EAN GTIN</title>
     <link rel="stylesheet" href="styles/popup.css">
-
-    <style>
-        body {
-            font-family: sans-serif;
-            width: 480px;
-            padding: 16px;
-            background-color: #fafafa;
-        }
-
-        h1 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        label {
-            display: block;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        input,
-        select,
-        button {
-            width: 100%;
-            padding: 6px;
-            margin-top: 4px;
-            font-size: 14px;
-        }
-
-        #results {
-            margin-top: 12px;
-            padding: 8px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-height: 60px;
-            max-height: 300px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 13px;
-        }
-
-        .result-item-wrapper {
-            padding: 8px;
-            margin: 4px 0;
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-        }
-
-        .result-item {
-            cursor: pointer;
-            color: #0b76ff;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .result-item:hover {
-            text-decoration: underline;
-        }
-
-        .barcode-preview {
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            padding: 4px;
-            display: inline-block;
-            background: white;
-        }
-
-        .barcode-actions {
-            display: flex;
-            gap: 4px;
-            margin-top: 6px;
-        }
-
-        .barcode-actions button {
-            flex: 1;
-            padding: 4px;
-            font-size: 12px;
-        }
-    </style>
 </head>
 
 <body class="popup">
     <div class="card">
         <div class="header">
             <div>
-                <div class="h1">Gerador EAN / GTIN</div>
+                <!-- Ícone SVG moderno + título (melhoria visual premium) -->
+                <div class="header-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="header-icon">
+                        <rect x="3" y="5" width="2" height="14" rx="0.5"/>
+                        <rect x="7" y="3" width="2" height="18" rx="0.5"/>
+                        <rect x="11" y="8" width="2" height="8" rx="0.5"/>
+                        <rect x="15" y="4" width="2" height="16" rx="0.5"/>
+                        <rect x="19" y="6" width="2" height="12" rx="0.5"/>
+                    </svg>
+                    <div class="h1">Gerador EAN / GTIN</div>
+                </div>
 
                 <label class="label" for="gtinType">Tipo</label>
                 <select id="gtinType" class="input">
